@@ -14,18 +14,65 @@
 </head>
 
 <body>
-    <header>
-        <div class="gutter-right logo">
-            <img src="../assets/big-logo.png" />
-        </div>
-    </header>    
     <button id="logout">Logout</button>
     <main>
-        <h1>You are logged in!</h1>
-    </main>
-    <footer>
-        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
-    </footer>
+        <div class="picker">
+            <div class="skyline-stuff">
+                <label>
+                    Skyline:
+                    <select id="skyline-dropdown">
+                        <option value="Dune">Dune</option>
+                        <option value="Piltover">Piltover</option>
+                        <option value="Zaun">Zaun</option>
+                    </select>
+                </label>
+                <div class="skyline">
+                    <img id="skyline-image"/>
+                </div>
+            </div>
+                
+            <div class="waterfront-stuff">
+                <label>
+                    Waterfront
+                    <select id="waterfront-dropdown">
+                        <option value="Dune">Dune</option>
+                        <option value="Piltover">Piltover</option>
+                        <option value="Zaun">Zaun</option>
+                    </select>
+                </label>
+                <div class="waterfront">
+                    <img id="waterfront-image"/>
+                </div>
+            </div>
+                
+            <div class="castle-stuff">
+                <label>
+                    Castle
+                    <select id="castle-dropdown">
+                        <option value="Dune">Dune</option>
+                        <option value="Piltover">Piltover</option>
+                        <option value="Zaun">Zaun</option>
+                    </select>
+                </label>  
+                <div class="castle">
+                    <img id="castle-image"/>
+                </div>
+            </div>
+        </div>    
+            
+        <div class="slogans">
+                <label>
+                    Add a slogan:
+                    <input id="slogan-input"/>
+                </label>
+            <button id="slogan-button">Add</button>
+        <div class="list"></div>
+    </div>
+    <div class="count">
+
+    </div>
+    </main>  
+
     <script type="module" src="./other-page.js"></script>
 </body>
 
