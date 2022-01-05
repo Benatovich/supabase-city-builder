@@ -16,62 +16,72 @@
 <body>
     <button id="logout">Logout</button>
     <main>
-        <div class="picker">
-            <div class="skyline-stuff">
-                <label>
-                    Skyline:
-                    <select id="skyline-dropdown">
-                        <option value="Dune">Dune</option>
-                        <option value="Piltover">Piltover</option>
-                        <option value="Zaun">Zaun</option>
-                    </select>
-                </label>
-                <div class="skyline">
-                    <img id="skyline-image"/>
-                </div>
+        
+        <section>
+            <h1>Welcome to <span class="city-name"></span></h1>
+        </section>
+
+        <section class="images">
+            <div class="waterfront">
+                <img class="waterfront-img" />
             </div>
-                
-            <div class="waterfront-stuff">
+            <div class="skyline">
+                <img class="skyline-img" />
+            </div>
+            <div class="castle">
+                <img class="castle-img" />
+            </div>
+        </section>
+        <section class="slogan-section">
+            <h2>Slogans:</h2>
+            <div class="slogan-list">
+
+            </div>
+        </section>
+        <section class="inputs">
+            <form class="slogan-form">
+                <input name="slogan" />
+                <button>Add Slogan</button>
+            </form>
+            <form class="name-form">
+                <input name="name" />
+                <button>Change City Name</button>
+            </form>
+
+            <div class="dropdowns">
                 <label>
                     Waterfront
-                    <select id="waterfront-dropdown">
-                        <option value="Dune">Dune</option>
-                        <option value="Piltover">Piltover</option>
-                        <option value="Zaun">Zaun</option>
+                    <select class="waterfront-dropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </label>
-                <div class="waterfront">
-                    <img id="waterfront-image"/>
-                </div>
-            </div>
-                
-            <div class="castle-stuff">
+                <label>
+                    Skyline
+                    <select class="skyline-dropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </label>
                 <label>
                     Castle
-                    <select id="castle-dropdown">
-                        <option value="Dune">Dune</option>
-                        <option value="Piltover">Piltover</option>
-                        <option value="Zaun">Zaun</option>
+                    <select class="castle-dropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
-                </label>  
-                <div class="castle">
-                    <img id="castle-image"/>
-                </div>
-            </div>
-        </div>    
-            
-        <div class="slogans">
-                <label>
-                    Add a slogan:
-                    <input id="slogan-input"/>
                 </label>
-            <button id="slogan-button">Add</button>
-        <div class="list"></div>
-    </div>
-    <div class="count">
+            </div>
 
-    </div>
-    </main>  
+        </section>
+        <div class="count">
+    
+        </div>
+    </main>
+
+        
 
     <script type="module" src="./other-page.js"></script>
 </body>
