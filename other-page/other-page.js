@@ -1,28 +1,35 @@
-import { checkAuth, logout, fetchCity, updateWaterfront, updateSkyline, updateCastle, updateSlogans, createCity } from '../fetch-utils.js';
+import { checkAuth, logout, fetchCity, updateName, updateWaterfront, updateSkyline, updateCastle, updateSlogans, createCity } from '../fetch-utils.js';
 
 checkAuth();
+
+const sloganForm = document.querySelector('.slogan-form');
+const nameForm = document.querySelector('.name-form');
 
 const skylineDropdown = document.querySelector('#skyline-dropdown');
 const waterfrontDropdown = document.querySelector('#waterfront-dropdown');
 const castleDropdown = document.querySelector('#castle-dropdown');
 
+const cityNameEl = document.querySelector('.city-name');
 const skylineImageEl = document.querySelector('#skyline-image');
 const waterfrontImageEl = document.querySelector('#waterfront-image');
 const castleImageEl = document.querySelector('#castle-image');
 
-const sloganInput = document.querySelector('#slogan-input');
-const sloganButton = document.querySelector('#slogan-button');
+// const sloganButton = document.querySelector('#slogan-button');
 const sloganListEl = document.querySelector('.list');
 
 const countEl = document.querySelector('.count');
 const logoutButton = document.getElementById('logout');
 
-// we're still keeping track of 'this session' clicks, so we keep these lets
-let nameCount = 0;
-let waterfrontCount = 0;
-let skylineCount = 0;
-let castleCount = 0;
-let slogans = [];
+// // we're still keeping track of 'this session' clicks, so we keep these lets
+// let nameCount = 0;
+// let waterfrontCount = 0;
+// let skylineCount = 0;
+// let castleCount = 0;
+// let slogans = [];
+
+logoutButton.addEventListener('click', () => {
+    logout();
+});
 
 waterfrontDropdown.addEventListener('change', async() => {
     // increment the correct count in state
@@ -84,9 +91,7 @@ window.addEventListener('load', async() => {
     refreshData();
 });
 
-logoutButton.addEventListener('click', () => {
-    logout();
-});
+
 
 function displayStats() {
     countEl.textContent = `In this session, you have changed the name ${nameCount} times, the waterfront ${waterfrontCount} times, the skyline ${skylineCount} times, and the castle ${castleCount} times. And nobody can forget your city's classic slogans:`;
@@ -117,27 +122,3 @@ function refreshData() {
     displayStats();
     fetchAndDisplayCharacter();
 }
-
-// early attempt at displayCity(city) below:
-// async function displayCity(city) {
-//     // fetch the city from supabase
-//     const { name, waterfront, skyline, castle } = await fetchCity();
-//     nameEl.textContent = '';
-//     nameEl.textContent = name;
-//     // if the city has a waterfront, display the waterfront in the dom
-//     if (waterfront) waterfrontImageEl.style.backgroundImage = `url("../assets/${waterfront}-waterfront.png")`;
-//     // if the city has a skyline, display the skyline in the dom
-//     if (skyline) skylineImageEl.style.backgroundImage = `url("../assets/${skyline}-skyline.png")`;
-//     // if the city has a castle, display the castle in the dom
-//     if (castle) castleImageEl.style.backgroundImage = `url("../assets/${castle}-castle.png")`;
-//     // loop through slogans and display them to the dom (clearing out old dom if necessary)
-//     sloganListEl.textContent = '';
-//     for (let slogan of slogans) {
-//         const p = document.createElement('p');
-
-//         p.classList.add('slogan');
-//         p.textContent = slogan;
-
-//         slogansEl.append(p);
-//     }
-// }
