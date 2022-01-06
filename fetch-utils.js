@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const SUPABASE_URL = 'https://cnfgxcsilmdanstiixji.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTUwNzY3MywiZXhwIjoxOTU1MDgzNjczfQ.T4j8T8PmMQvcyTO4egZ0EUIxHwmUeklr4DArTmn6mc0';
 
@@ -7,86 +8,84 @@ export async function fetchCity() {
     const response = await client
         .from('cities')
         .select()
-        .match({ user_id: client.auth.user().id, })
         .single();
 
     return checkError(response);    
 }
 
-export async function createCity(city){
+export async function createCity() {
     const response = await client
         .from('cities')
-        .insert({
-            ...city, 
-            user_id: client.auth.user().id, 
-        })
-        .single();
+        .insert([
+            {
+                name: 'Dune',
+                waterfront_id: 1,
+                skyline_id: 1,
+                castle_id: 1,
+                slogans: []
+            }
+        ]);
 
     return checkError(response);
 }
 
 export async function updateWaterfront(value){
-    const currentUserId = client.auth.user().id;
+    const user = await getUser();
 
-    // in supabase, update the waterfront property
-    // for the city whose user_id match's the currently logged in user's id
     const response = await client
         .from('cities')
-        .update({ waterfront: value })
-        .match({ user_id: currentUserId });    
+        .update({ waterfront_id: value })
+        .match({ user_id: user.user.id })
+        .single();
 
     return checkError(response);    
 }
 
 export async function updateSkyline(value){
-    const currentUserId = client.auth.user().id;
+    const user = await getUser();
 
-    // in supabase, update the skyline property
-    // for the city whose user_id match's the currently logged in user's id
     const response = await client
         .from('cities')
-        .update({ skyline: value })
-        .match({ user_id: currentUserId });    
+        .update({ skyline_id: value })
+        .match({ user_id: user.user.id })
+        .single();    
 
     return checkError(response);    
 }
 
 
 export async function updateCastle(value){
-    const currentUserId = client.auth.user().id;
+    const user = await getUser();
 
-    // in supabase, update the castle property
-    // for the city whose user_id match's the currently logged in user's id
     const response = await client
         .from('cities')
-        .update({ castle: value })
-        .match({ user_id: currentUserId });    
+        .update({ castle_id: value })
+        .match({ user_id: user.user.id })
+        .single();
 
     return checkError(response);    
 }
 
 export async function updateSlogans(value){
-    const currentUserId = client.auth.user().id;
-
-    // in supabase, update the slogans property
-    // for the city whose user_id match's the currently logged in user's id
+    const user = await getUser();
+    
     const response = await client
         .from('cities')
         .update({ slogans: value })
-        .match({ user_id: currentUserId });    
+        .match({ user_id: user.user.id })
+        .single();    
 
     return checkError(response);    
 }
 
 export async function updateName(value){
-    const currentUserId = client.auth.user().id;
+    const user = await getUser();
 
-    // in supabase, update the name property
-    // for the city whose user_id match's the currently logged in user's id
     const response = await client
         .from('cities')
         .update({ name: value })
-        .match({ user_id: currentUserId });    
+        .match({ user_id: user.user.id })
+        .single();    
 
     return checkError(response);    
 }

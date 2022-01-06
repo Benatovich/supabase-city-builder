@@ -20,25 +20,14 @@ const sloganListEl = document.querySelector('.slogan-list');
 // const countEl = document.querySelector('.count');
 const logoutButton = document.getElementById('logout');
 
-// if we want to track 'this session' changes:
-// let nameCount = 0;
-// let waterfrontCount = 0;
-// let skylineCount = 0;
-// let castleCount = 0;
-// let slogans = [];
-
 logoutButton.addEventListener('click', () => {
     logout();
 });
 
 waterfrontDropdown.addEventListener('change', async() => {
-    // increment the correct count in state
-    // waterfrontCount++;
-    // update the waterfront in supabase with the correct data
     const updatedCity = await updateWaterfront(waterfrontDropdown.value);
-    // refreshData();
+
     displayCity(updatedCity);
-    // displayStats();
 });
 
 
@@ -97,20 +86,6 @@ sloganForm.addEventListener('submit', async(e) => {
 
 });
 
-// no more sloganButton
-// sloganButton.addEventListener('click', async() => {
-//     // go fetch the old slogans
-//     // ^do i need anything for this here?
-//     // update the slogan array locally by pushing the new slogan into the old array
-//     slogans.push(sloganInput.value);
-
-//     sloganInput.value = '';
-//     // update the slogans in supabase by passing the mutated array to the updateCatchphrases function
-//     await updateSlogans(slogans);
-
-//     refreshData();
-// });
-
 window.addEventListener('load', async() => {
     // on load, attempt to fetch this user's city
     const city = await fetchCity();
@@ -126,14 +101,10 @@ window.addEventListener('load', async() => {
     // displayStats();
 });
 
-// function displayStats() {
-//     countEl.textContent = `In this session, you have changed the name ${nameCount} times, the waterfront ${waterfrontCount} times, the skyline ${skylineCount} times, and the castle ${castleCount} times. And nobody can forget your city's classic slogans:`;
-// }
-
 async function displayCity(city) {
     cityNameEl.textContent = city.name;
-    waterfrontImageEl.src = `../assets/waterfront-${city.waterfront_id}.jpeg`;
-    skylineImageEl.src = `../assets/skyline-${city.skyline_id}.jpeg`;
+    waterfrontImageEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
+    skylineImageEl.src = `../assets/skyline-${city.skyline_id}.jpg`;
     castleImageEl.src = `../assets/castle-${city.castle_id}.jpg`;
 
     // loop through slogans
