@@ -112,12 +112,12 @@ p {
     margin: 10px;
 }
 
-.images {
+.pictures {
     display: flex;
     flex-direction: row;
 }
 
-.images img {
+.pictures img {
     border: solid 1px black;
     width: 200px;
     height: 200px;

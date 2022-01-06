@@ -5,7 +5,7 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function fetchCity() {
     const response = await client
-        .from('city')
+        .from('cities')
         .select()
         .match({ user_id: client.auth.user().id, })
         .single();
@@ -15,7 +15,7 @@ export async function fetchCity() {
 
 export async function createCity(city){
     const response = await client
-        .from('city')
+        .from('cities')
         .insert({
             ...city, 
             user_id: client.auth.user().id, 
@@ -31,7 +31,7 @@ export async function updateWaterfront(value){
     // in supabase, update the waterfront property
     // for the city whose user_id match's the currently logged in user's id
     const response = await client
-        .from('city')
+        .from('cities')
         .update({ waterfront: value })
         .match({ user_id: currentUserId });    
 
@@ -44,7 +44,7 @@ export async function updateSkyline(value){
     // in supabase, update the skyline property
     // for the city whose user_id match's the currently logged in user's id
     const response = await client
-        .from('city')
+        .from('cities')
         .update({ skyline: value })
         .match({ user_id: currentUserId });    
 
@@ -58,7 +58,7 @@ export async function updateCastle(value){
     // in supabase, update the castle property
     // for the city whose user_id match's the currently logged in user's id
     const response = await client
-        .from('city')
+        .from('cities')
         .update({ castle: value })
         .match({ user_id: currentUserId });    
 
@@ -71,7 +71,7 @@ export async function updateSlogans(value){
     // in supabase, update the slogans property
     // for the city whose user_id match's the currently logged in user's id
     const response = await client
-        .from('city')
+        .from('cities')
         .update({ slogans: value })
         .match({ user_id: currentUserId });    
 
@@ -84,7 +84,7 @@ export async function updateName(value){
     // in supabase, update the name property
     // for the city whose user_id match's the currently logged in user's id
     const response = await client
-        .from('city')
+        .from('cities')
         .update({ name: value })
         .match({ user_id: currentUserId });    
 

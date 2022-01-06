@@ -130,7 +130,7 @@ window.addEventListener('load', async() => {
 //     countEl.textContent = `In this session, you have changed the name ${nameCount} times, the waterfront ${waterfrontCount} times, the skyline ${skylineCount} times, and the castle ${castleCount} times. And nobody can forget your city's classic slogans:`;
 // }
 
-function displayCity(city) {
+async function displayCity(city) {
     cityNameEl.textContent = city.name;
     waterfrontImageEl.src = `../assets/waterfront-${city.waterfront_id}.jpeg`;
     skylineImageEl.src = `../assets/skyline-${city.skyline_id}.jpeg`;
