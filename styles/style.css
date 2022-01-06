@@ -1,15 +1,6 @@
 
 body {
-    /* feel free to update these css variables for a quick theme */
-    
-    --color1: white;
-    --color2: white;
-    --color3: white;
-    --color4: white;
-    --color5: white;
-    
     /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
-        
     /* --color1: hsla(349, 69%, 76%, 1);
     --color2: hsla(207, 67%, 44%, 1);
     --color3: hsla(200, 61%, 56%, 1);
@@ -41,6 +32,7 @@ main {
 
 section {
     background-color: var(--color5);
+    width: 1000px;
     max-width: 80%;
     display: flex;
     flex-direction: column;
@@ -61,76 +53,72 @@ header {
     box-shadow: var(--shadow);
 }
 
-
-h2 {
+h1 {
     font-size: 1.8rem;
     font-weight: bold;
-}
-
-.gutter-right {
-    margin-right: 20px;
 }
 
 header img {
     height: var(--header-height);
 }
 
-.picker {
+p {
+    margin: var(--gutter);
+}
+
+
+  
+  @keyframes pulse {
+    20% {
+      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
+    }
+
+    40% {
+        transform: rotate3d(10, 10, -10, 50deg) scale(1);
+    }
+
+    60% {
+        transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
+      }
+
+    80% {
+        transform: rotate3d(10, 10, 10, 50deg) scale(1);
+    }
+
+  }
+
+#logout {
+    position: fixed;
+    right: 20px;
+    top: 90px;
+}
+
+.auth-main {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-#skyline-dropdown {
-    margin: 50px;
-    margin-left: 5px;
-    margin-bottom: 15px;
-}
-#waterfront-dropdown {
-    margin: 50px;
-    margin-left: 5px;
-    margin-bottom: 15px;
-}
-#castle-dropdown {
-    margin: 50px;
-    margin-left: 5px;
-    margin-bottom: 15px;
+.auth-container {
+    margin: 10px;
 }
 
-.skyline {
-    height: 300px;
-}
-
-.skyline img {
-    height: 300px;
-}
-
-.waterfront {
-    height: 300px;
-}
-.waterfront img {
-    height: 300px;
-}
-
-.castle {
-    height: 300px;
-
-}
-.castle img {
-    height: 300px;
-}
-
-p {
-    margin: var(--gutter);
-}
-  
-footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    height: var(--footer-height);
+.auth-container form {
     display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    box-shadow: var(--shadow);
+    flex-direction: column;
+}
+
+.auth-container button {
+    margin: 10px;
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+}
+
+.images img {
+    border: solid 1px black;
+    width: 200px;
+    height: 200px;
 }

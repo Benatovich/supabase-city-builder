@@ -5,26 +5,26 @@ checkAuth();
 const sloganForm = document.querySelector('.slogan-form');
 const nameForm = document.querySelector('.name-form');
 
-const skylineDropdown = document.querySelector('#skyline-dropdown');
-const waterfrontDropdown = document.querySelector('#waterfront-dropdown');
-const castleDropdown = document.querySelector('#castle-dropdown');
+const skylineDropdown = document.querySelector('.skyline-dropdown');
+const waterfrontDropdown = document.querySelector('.waterfront-dropdown');
+const castleDropdown = document.querySelector('.castle-dropdown');
 
 const cityNameEl = document.querySelector('.city-name');
-const skylineImageEl = document.querySelector('#skyline-image');
-const waterfrontImageEl = document.querySelector('#waterfront-image');
-const castleImageEl = document.querySelector('#castle-image');
+const skylineImageEl = document.querySelector('.skyline-image');
+const waterfrontImageEl = document.querySelector('.waterfront-image');
+const castleImageEl = document.querySelector('.castle-image');
 
-// const sloganButton = document.querySelector('#slogan-button');
+// const sloganButton = document.querySelector('.slogan-button');
 const sloganListEl = document.querySelector('.slogan-list');
 
-const countEl = document.querySelector('.count');
+// const countEl = document.querySelector('.count');
 const logoutButton = document.getElementById('logout');
 
 // if we want to track 'this session' changes:
-let nameCount = 0;
-let waterfrontCount = 0;
-let skylineCount = 0;
-let castleCount = 0;
+// let nameCount = 0;
+// let waterfrontCount = 0;
+// let skylineCount = 0;
+// let castleCount = 0;
 // let slogans = [];
 
 logoutButton.addEventListener('click', () => {
@@ -38,7 +38,7 @@ waterfrontDropdown.addEventListener('change', async() => {
     const updatedCity = await updateWaterfront(waterfrontDropdown.value);
     // refreshData();
     displayCity(updatedCity);
-    displayStats();
+    // displayStats();
 });
 
 
@@ -49,7 +49,7 @@ skylineDropdown.addEventListener('change', async() => {
     const updatedCity = await updateSkyline(skylineDropdown.value);
     // refreshData();
     displayCity(updatedCity);
-    displayStats();
+    // displayStats();
 
 });
 
@@ -61,7 +61,7 @@ castleDropdown.addEventListener('change', async() => {
     const updatedCity = await updateCastle(castleDropdown.value);
     // refreshData();
     displayCity(updatedCity);
-    displayStats();
+    // displayStats();
 });
 
 nameForm.addEventListener('submit', async(e) => {
@@ -74,7 +74,7 @@ nameForm.addEventListener('submit', async(e) => {
     const updatedCity = await updateName(name);
 
     displayCity(updatedCity);
-    displayStats();
+    // displayStats();
 });
 
 sloganForm.addEventListener('submit', async(e) => {
@@ -93,7 +93,7 @@ sloganForm.addEventListener('submit', async(e) => {
     const updatedCity = await updateSlogans(city.slogans);
 
     displayCity(updatedCity);
-    displayStats();
+    // displayStats();
 
 });
 
@@ -113,7 +113,7 @@ sloganForm.addEventListener('submit', async(e) => {
 
 window.addEventListener('load', async() => {
     // on load, attempt to fetch this user's city
-    let city = await fetchCity();
+    const city = await fetchCity();
 
     // if user doesn't have one, make a new city with correct defaults
     if (!city) {
@@ -123,20 +123,20 @@ window.addEventListener('load', async() => {
     } else {
         displayCity(city);
     }
-    displayStats();
+    // displayStats();
 });
 
-function displayStats() {
-    countEl.textContent = `In this session, you have changed the name ${nameCount} times, the waterfront ${waterfrontCount} times, the skyline ${skylineCount} times, and the castle ${castleCount} times. And nobody can forget your city's classic slogans:`;
-}
+// function displayStats() {
+//     countEl.textContent = `In this session, you have changed the name ${nameCount} times, the waterfront ${waterfrontCount} times, the skyline ${skylineCount} times, and the castle ${castleCount} times. And nobody can forget your city's classic slogans:`;
+// }
 
 function displayCity(city) {
     cityNameEl.textContent = city.name;
-    waterfrontImageEl.src = `../assets/${city.waterfront_id}-waterfront.jpg`;
-    skylineImageEl.src = `../assets/${city.skyline_id}-skyline.jpg`;
-    castleImageEl.src = `../assets/${city.castle_id}-castle.jpg`;
+    waterfrontImageEl.src = `../assets/waterfront-${city.waterfront_id}.jpeg`;
+    skylineImageEl.src = `../assets/skyline-${city.skyline_id}.jpeg`;
+    castleImageEl.src = `../assets/castle-${city.castle_id}.jpg`;
 
-    // loop through slogans, render, append
+    // loop through slogans
     sloganListEl.textContent = '';
 
     for (let slogan of city.slogans) {
