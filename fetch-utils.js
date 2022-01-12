@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 const SUPABASE_URL = 'https://cnfgxcsilmdanstiixji.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTUwNzY3MywiZXhwIjoxOTU1MDgzNjczfQ.T4j8T8PmMQvcyTO4egZ0EUIxHwmUeklr4DArTmn6mc0';
 
@@ -8,6 +9,7 @@ export async function fetchCity() {
     const response = await client
         .from('cities')
         .select()
+        .match({ user_id: client.auth.user().id, })
         .single();
 
     return checkError(response);    
@@ -122,7 +124,7 @@ export async function signInUser(email, password){
 export async function logout() {
     await client.auth.signOut();
 
-    return window.location.href = '/';
+    return window.location.href = '../';
 }
 
 function checkError({ data, error }) {

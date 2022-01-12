@@ -68,19 +68,20 @@ nameForm.addEventListener('submit', async(e) => {
 
 sloganForm.addEventListener('submit', async(e) => {
     e.preventDefault();
-
+    
     const data = new FormData(sloganForm);
-// get the new slogan from the form
+    // get the new slogan from the form
     const newSlogan = data.get('slogan');
-
+    
     // get the old city/slogans from supabase
     const city = await fetchCity();
-
+    
+    console.log(typeof city.slogans);
     // push new slogan into array of existing slogans
     city.slogans.push(newSlogan);
-
     const updatedCity = await updateSlogans(city.slogans);
 
+    sloganForm.reset();
     displayCity(updatedCity);
     // displayStats();
 
