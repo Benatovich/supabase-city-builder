@@ -14,18 +14,77 @@
 </head>
 
 <body>
-    <header>
-        <div class="gutter-right logo">
-            <img src="../assets/big-logo.png" />
-        </div>
-    </header>    
     <button id="logout">Logout</button>
     <main>
-        <h1>You are logged in!</h1>
+        
+        <section>
+            <h1>Welcome to <span class="city-name"></span></h1>
+        </section>
+
+        <section class="slogan-section">
+            <h2>Slogans:</h2>
+            <div class="slogan-list">
+
+            </div>
+        </section>
+
+        <section class="pictures">
+            <div class="waterfront">
+                <img class="waterfront-image" />
+            </div>
+            <div class="skyline">
+                <img class="skyline-image" />
+            </div>
+            <div class="castle">
+                <img class="castle-image" />
+            </div>
+        </section>
+        
+        <section class="inputs">
+            <form class="slogan-form">
+                <input name="slogan" />
+                <button>Add Slogan</button>
+            </form>
+            <form class="name-form">
+                <input name="name" />
+                <button>Change City Name</button>
+            </form>
+
+            <div class="dropdowns">
+                <label>
+                    Waterfront
+                    <select class="waterfront-dropdown">
+                        <option value="1">Dune</option>
+                        <option value="2">Piltover</option>
+                        <option value="3">Zaun</option>
+                    </select>
+                </label>
+                <label>
+                    Skyline
+                    <select class="skyline-dropdown">
+                        <option value="1">Dune</option>
+                        <option value="2">Piltover</option>
+                        <option value="3">Zaun</option>
+                    </select>
+                </label>
+                <label>
+                    Castle
+                    <select class="castle-dropdown">
+                        <option value="1">Dune</option>
+                        <option value="2">Piltover</option>
+                        <option value="3">Zaun</option>
+                    </select>
+                </label>
+            </div>
+
+        </section>
+        <div class="count">
+    
+        </div>
     </main>
-    <footer>
-        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
-    </footer>
+
+        
+
     <script type="module" src="./other-page.js"></script>
 </body>
 
