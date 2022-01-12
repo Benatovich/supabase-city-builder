@@ -62,6 +62,7 @@ nameForm.addEventListener('submit', async(e) => {
 
     const updatedCity = await updateName(name);
 
+    nameForm.reset();
     displayCity(updatedCity);
     // displayStats();
 });
